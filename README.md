@@ -167,7 +167,7 @@ class RestOfApps
 > Don't forget to `use` [ NasimTelecom\Simotel\SmartApi\Commands](https://github.com/nasimtelecom/simotel-php-connect/blob/main/src/SmartApi/Commands.php) trait in your class.
 
 
-2. handle received request from simotel smart api
+#### 2. handle received request from simotel smart api
 
 ```php
 $config = Simotel::getDefaultConfig();
@@ -225,13 +225,11 @@ cmdMusicOnHold();
 
 ```php
 
-use NasimTelecom\Simotel\SmartApi\Commands;
-
 class SelectTrunk
 {
     public function selectTrunk($appData)
     {
-        if($appData[$data]=="1")
+        if(/* some conditions */)
             return [
                 "trunk" => "trunk1",
                 "extension" => "extension1",
@@ -250,7 +248,7 @@ class SelectTrunk
 
 ```
 
-2. handle received request from Simotel Trunk API
+#### 2. handle received request from Simotel Trunk API
 
 ```php
 $config = Simotel::getDefaultConfig();
@@ -268,7 +266,7 @@ header('Content-Type: application/json; charset=utf-8');
 echo $jsonResponse;
 
 /*
-    if data="1" 
+    if some conditions then 
 		 jsonResponse = {
             "ok": "1",             
             "trunk": "trunk1",
@@ -276,17 +274,108 @@ echo $jsonResponse;
             "call_limit": "300"
         }
 	 else 
-		 jsonResponse = {
+		jsonResponse = {
             "ok": "1",             
             "trunk": "trunk2",
             "extension": "extension2",
             "call_limit": "400"
         }
 */
+```
+
+## Simotel Ivr API
+> We recommend you to study [Simotel Ivr API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/exten_api) first.
 
 
-## Simotel Extension API
-> We recommend you to study [Simotel Extension API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/exten_api) first.
+
+#### 1. create Ivr API class and methods
+
+```php
+
+class SelectIvr
+{
+    public function selectIvr($appData)
+    {
+        if(/* some conditions */)
+            return "ext1";
+        
+        //else
+            return "ext2";
+    }
+}
+
+
+```
+
+#### 2. handle received request from Simotel Ivr API
+
+```php
+$config = Simotel::getDefaultConfig();
+$config["selectIvr"]["apps"] = [
+  'selectIvr' => SelectIvr::class,
+];
+
+// place this codes where you want grab income requests
+// from simotel extensionApi calls     
+$simotel = new Simotel($config);
+$appData = $_POST["app_data"];
+$jsonResponse = $simotel->extension($appData)->toJson();
+
+header('Content-Type: application/json; charset=utf-8');
+echo $jsonResponse;
+
+/*
+    if some conditions then 
+		 jsonResponse = {"ok": "1", "extension": "ext1"}
+	 else 
+		 jsonResponse = {"ok": "1", "extension": "ext2"}
+*/
+```
 
 ## Simotel Ivr API
 > We recommend you to study [Simotel Ivr API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/ivr_api) first.
+
+
+#### 1. create Ivr API class and methods
+
+```php
+
+class SelectIvr
+{
+    public function selectIvr($appData)
+    {
+        if(/* some conditions */)
+            return "ext1";
+        
+        //else
+            return "ext2";
+    }
+}
+
+
+```
+
+#### 2. handle received request from Simotel Ivr API
+
+```php
+$config = Simotel::getDefaultConfig();
+$config["extensionApi"]["apps"] = [
+  'selectIvr' => SelectIvr::class,
+];
+
+// place this codes where you want grab income requests
+// from simotel extensionApi calls     
+$simotel = new Simotel($config);
+$appData = $_POST["app_data"];
+$jsonResponse = $simotel->extension($appData)->toJson();
+
+header('Content-Type: application/json; charset=utf-8');
+echo $jsonResponse;
+
+/*
+    if some conditions then 
+		 jsonResponse = {"ok": "1", "extension": "ext1"}
+	 else 
+		 jsonResponse = {"ok": "1", "extension": "ext2"}
+*/
+```
