@@ -12,9 +12,9 @@ With this package you can easly connect to simotel server by php and do somethin
 
 
 - [Install](#install)
-- [Simotel Api](#simotel-api)
-- [Simotel Event Api](#simotel-event-api)
-- [Smart Api](#simotel-smart-api)
+- [Simotel API](#simotel-api)
+- [Simotel Event API](#simotel-event-api)
+- [Smart API](#simotel-smart-api)
 
 ## Install
 
@@ -23,12 +23,12 @@ Use composer to install and autoload the package:
 composer require nasimtelecom/simotel-php-connect
 ```
 
-## Simotel Api
-Simotel Api helps you to connect to simotel server and manage simotel users, queues, trunks, announcements, get reports, send faxes [and more](https://doc.mysup.ir/docs/api/v4/callcenter_api/SimoTelAPI/settings).
+## Simotel API
+Simotel API helps you to connect to simotel server and manage simotel users, queues, trunks, announcements, get reports, send faxes [and more](https://doc.mysup.ir/docs/api/v4/callcenter_api/SimoTelAPI/settings).
 
 
 
-### Connect to Simotel Api
+### Connect to Simotel API
 
 ```php
 
@@ -94,7 +94,7 @@ $users = $res->getData();
 
 
 
-## Simotel Event Api
+## Simotel Event API
 
 
 
@@ -118,7 +118,7 @@ $simotel->eventApi()->dispatch($eventName,$simotelEventApiData);
 ```
 > It is possible to put your api endpoint address on [Simotel Api Setting](https://doc.mysup.ir/docs/simotel/callcenter-docs/maintenance/settings/api_settings)
 
-## Simotel Smart Api
+## Simotel Smart API
 > We recommend you to study [Simotel SmartApi documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/smart_api) first.
 
 #### 1. create smartApp classes and methods that called by smart api apps
@@ -200,7 +200,7 @@ echo $jsonResponse;
 */
 ```
 
-there are is commands you can use in your SmartApps classes:
+there are commands that you can use in your SmartApp classes:
 
 ```php
 cmdPlayAnnouncement($announceFilename);
@@ -217,3 +217,76 @@ cmdSetLimitOnCall($seconds);
 cmdClearUserData();
 cmdMusicOnHold();
 ```
+
+## Simotel Trunk API
+> We recommend you to study [Simotel Trunk API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/trunk_api) first.
+
+#### 1. create TrunkApp classe and methods
+
+```php
+
+use NasimTelecom\Simotel\SmartApi\Commands;
+
+class SelectTrunk
+{
+    public function selectTrunk($appData)
+    {
+        if($appData[$data]=="1")
+            return [
+                "trunk" => "trunk1",
+                "extension" => "extension1",
+                "call_limit" => "300"
+            ];
+        
+        //else
+        return [
+            "trunk" => "trunk2",
+            "extension" => "extension2",
+            "call_limit" => "400"
+        ];
+    }
+}
+
+
+```
+
+2. handle received request from Simotel Trunk API
+
+```php
+$config = Simotel::getDefaultConfig();
+$config["trunkApi"]["apps"] = [
+  'selectTrunk' => SelectTrunk::class,
+];
+
+// place this codes where you want grab income requests
+// from simotel smartApi calls     
+$simotel = new Simotel($config);
+$appData = $_POST["app_data"];
+$jsonResponse = $simotel->trunkApi($appData)->toJson();
+
+header('Content-Type: application/json; charset=utf-8');
+echo $jsonResponse;
+
+/*
+    if data="1" 
+		 jsonResponse = {
+            "ok": "1",             
+            "trunk": "trunk1",
+            "extension": "extension1",
+            "call_limit": "300"
+        }
+	 else 
+		 jsonResponse = {
+            "ok": "1",             
+            "trunk": "trunk2",
+            "extension": "extension2",
+            "call_limit": "400"
+        }
+*/
+
+
+## Simotel Extension API
+> We recommend you to study [Simotel Extension API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/exten_api) first.
+
+## Simotel Ivr API
+> We recommend you to study [Simotel Ivr API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/ivr_api) first.
