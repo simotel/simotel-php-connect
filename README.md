@@ -14,7 +14,10 @@ With this package you can easly connect to simotel server by php and do somethin
 - [Install](#install)
 - [Simotel API](#simotel-api)
 - [Simotel Event API](#simotel-event-api)
-- [Smart API](#simotel-smart-api)
+- [Simotel Smart API](#simotel-smart-api)
+- [Simotel Trunk API](#simotel-trunk-api)
+- [Simotel Extension API](#simotel-extension-api)
+- [Simotel Ivr API](#simotel-ivr-api)
 
 ## Install
 
