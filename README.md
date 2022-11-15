@@ -345,10 +345,10 @@ class SelectIvr
     public function selectIvr($appData)
     {
         if(/* some conditions */)
-            return "ext1";
+            return "1";
         
         //else
-            return "ext2";
+            return "2";
     }
 }
 
@@ -374,8 +374,8 @@ echo $jsonResponse;
 
 /*
     if some conditions then 
-		 jsonResponse = {"ok": "1", "extension": "ext1"}
+		 jsonResponse = {"ok": "1", "case": "1"}
 	 else 
-		 jsonResponse = {"ok": "1", "extension": "ext2"}
+		 jsonResponse = {"ok": "1", "case": "2"}
 */
 ```
