@@ -1,0 +1,32 @@
+{
+  "name": "nasimtelecom/simotel-php-connect",
+  "description": "Keep connected with simotel in php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hossein",
+      "email": "hosseinyaghmaee@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "NasimTelecom\\Simotel\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "NasimTelecom\\Simotel\\Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "guzzlehttp/guzzle": ">=7.2",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}
