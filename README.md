@@ -283,18 +283,18 @@ echo $jsonResponse;
 */
 ```
 
-## Simotel Ivr API
-> We recommend you to study [Simotel Ivr API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/exten_api) first.
+## Simotel Extension API
+> We recommend you to study [Simotel Extension API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/exten_api) first.
 
 
 
-#### 1. create Ivr API class and methods
+#### 1. create Extension API class and methods
 
 ```php
 
-class SelectIvr
+class SelectExtension
 {
-    public function selectIvr($appData)
+    public function selectExtension($appData)
     {
         if(/* some conditions */)
             return "ext1";
@@ -307,19 +307,19 @@ class SelectIvr
 
 ```
 
-#### 2. handle received request from Simotel Ivr API
+#### 2. handle received request from Simotel Extension API
 
 ```php
 $config = Simotel::getDefaultConfig();
-$config["selectIvr"]["apps"] = [
-  'selectIvr' => SelectIvr::class,
+$config["extensionApi"]["apps"] = [
+  'selectExtension' => SelectExtension::class,
 ];
 
 // place this codes where you want grab income requests
 // from simotel extensionApi calls     
 $simotel = new Simotel($config);
 $appData = $_POST["app_data"];
-$jsonResponse = $simotel->extension($appData)->toJson();
+$jsonResponse = $simotel->extensionApi($appData)->toJson();
 
 header('Content-Type: application/json; charset=utf-8');
 echo $jsonResponse;
@@ -340,9 +340,9 @@ echo $jsonResponse;
 
 ```php
 
-class SelectIvr
+class SelectIvrCase
 {
-    public function selectIvr($appData)
+    public function selectCase($appData)
     {
         if(/* some conditions */)
             return "1";
@@ -359,15 +359,15 @@ class SelectIvr
 
 ```php
 $config = Simotel::getDefaultConfig();
-$config["extensionApi"]["apps"] = [
-  'selectIvr' => SelectIvr::class,
+$config["ivrApi"]["apps"] = [
+  'selectCase' => SelectIvrCase::class,
 ];
 
 // place this codes where you want grab income requests
-// from simotel extensionApi calls     
+// from simotel ivrApi calls     
 $simotel = new Simotel($config);
 $appData = $_POST["app_data"];
-$jsonResponse = $simotel->extension($appData)->toJson();
+$jsonResponse = $simotel->ivrApi($appData)->toJson();
 
 header('Content-Type: application/json; charset=utf-8');
 echo $jsonResponse;
