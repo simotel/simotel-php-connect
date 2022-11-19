@@ -156,18 +156,18 @@ class RestOfApps
     public function sayClock($appData)
     {
         $this->cmdSayClock("14:00");
-        return $this->okResponse();
+        return $this->makeOkResponse();
         // return: {'ok':1,'commands':'SayClock("14:00")'} 
     }
 
     public function interactiveApp($appData)
     {
         if($appData["data"]=="1")
-            return $this->okResponse();
+            return $this->makeOkResponse();
             // return: {'ok':1}
 
         if($appData["data"]=="2")
-            return $this->errorResponse();
+            return $this->makeNokResponse();
             // return: {'ok':0}
     }
 }
