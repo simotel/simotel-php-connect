@@ -1,11 +1,11 @@
 <?php
 
-namespace NasimTelecom\Simotel;
+namespace Simotel;
 
-use NasimTelecom\Simotel\ComponentApi\SmartApi;
-use NasimTelecom\Simotel\ComponentApi\IvrApi;
-use NasimTelecom\Simotel\ComponentApi\ExtensionApi;
-use NasimTelecom\Simotel\ComponentApi\TrunkApi;
+use Simotel\ComponentApi\SmartApi;
+use Simotel\ComponentApi\IvrApi;
+use Simotel\ComponentApi\ExtensionApi;
+use Simotel\ComponentApi\TrunkApi;
 
 class Simotel
 {
@@ -30,7 +30,7 @@ class Simotel
      * @param \GuzzleHttp\Client $httpClient  Optional. http guzzle client for 
      *                                        testing or some other reasons.
      * 
-     * @return \NasimTelecom\Simotel\SimotelApi
+     * @return \Simotel\SimotelApi
      */
     public function connect($address, $data = [], $httpClient = null) : SimotelApi
     {
@@ -49,7 +49,7 @@ class Simotel
      * 
      * @param mixed[] $data request data that MUST contain app_name.
      * 
-     * @return \NasimTelecom\Simotel\ComponentApi\SmartApi
+     * @return \Simotel\ComponentApi\SmartApi
      */
     public function smartApi($data)
     {
@@ -62,7 +62,7 @@ class Simotel
      * 
      * @param mixed[] $data request data that MUST contain app_name.
      * 
-     * @return \NasimTelecom\Simotel\ComponentApi\SmartApi
+     * @return \Simotel\ComponentApi\SmartApi
      */
     public function ivrApi($data)
     {
@@ -76,7 +76,7 @@ class Simotel
      * 
      * @param mixed[] $data request data that MUST contain app_name.
      * 
-     * @return \NasimTelecom\Simotel\ComponentApi\ExtensionApi
+     * @return \Simotel\ComponentApi\ExtensionApi
      */
     public function extensionApi($data)
     {
@@ -89,7 +89,7 @@ class Simotel
      * 
      * @param mixed[] $data request data that MUST contain app_name.
      * 
-     * @return \NasimTelecom\Simotel\ComponentApi\TrunkApi
+     * @return \Simotel\ComponentApi\TrunkApi
      */
     public function trunkApi($data)
     {

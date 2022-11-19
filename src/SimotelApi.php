@@ -1,6 +1,6 @@
 <?php
 
-namespace NasimTelecom\Simotel;
+namespace Simotel;
 
 use GuzzleHttp\Client;
 class SimotelApi

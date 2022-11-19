@@ -1,6 +1,6 @@
 <?php
 
-namespace NasimTelecom\Simotel\Tests;
+namespace Simotel\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace NasimTelecom\Simotel;
+namespace Simotel;
 
-use NasimTelecom\Simotel\EventApi\SimotelEvents;
+use Simotel\EventApi\SimotelEvents;
 
 class SimotelEventApi
 {

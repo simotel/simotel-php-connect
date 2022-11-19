@@ -1,9 +1,9 @@
 <?php
 
-namespace NasimTelecom\Simotel\Tests;
+namespace Simotel\Tests;
 
-use NasimTelecom\Simotel\Simotel;
-use NasimTelecom\Simotel\SmartApi\Commands;
+use Simotel\Simotel;
+use Simotel\SmartApi\Commands;
 
 class SmartApiTest extends TestCase
 {

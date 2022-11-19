@@ -1,6 +1,6 @@
 <?php
 
-namespace NasimTelecom\Simotel\ComponentApi;
+namespace Simotel\ComponentApi;
 
 class SmartApi extends ComponentApi
 {
@@ -8,7 +8,7 @@ class SmartApi extends ComponentApi
     /**
      * @param mixed[] $data Simotel request data
      *
-     * @return \NasimTelecom\Simotel\SmartApi
+     * @return \Simotel\SmartApi
      * 
      * @throws \Exception
      */

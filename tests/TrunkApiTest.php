@@ -1,8 +1,8 @@
 <?php
 
-namespace NasimTelecom\Simotel\Tests;
+namespace Simotel\Tests;
 
-use NasimTelecom\Simotel\Simotel;
+use Simotel\Simotel;
 
 class TrunkApiTest extends TestCase
 {

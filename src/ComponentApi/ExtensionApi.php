@@ -1,6 +1,6 @@
 <?php
 
-namespace NasimTelecom\Simotel\ComponentApi;
+namespace Simotel\ComponentApi;
 
 class ExtensionApi extends ComponentApi
 {

@@ -53,7 +53,7 @@ $config["simotelApi"]= [
         'server_address' => 'http://simotelServer/api/v4',
     ],
 
-$simotel = new \NasimTelecom\Simotel\Simotel($config);
+$simotel = new \Simotel\Simotel($config);
 
 // The data will be sent to Simotel server as request body
 $data = [
@@ -120,7 +120,7 @@ $simotel->eventApi()->addListener('Cdr', function ($simotelApiData) {
 #### 2. Dispatch events after receive request from simotel event api on your api endpoint
 
 ```php
-use \NasimTelecom\Simotel\Simotel;
+use \Simotel\Simotel;
 $simotelEventApiData =  $_POST["api_data"];
 $eventName = $_POST["api_data"]["event_name"];
 $simotel = new Simotel();
@@ -135,7 +135,7 @@ $simotel->eventApi()->dispatch($eventName,$simotelEventApiData);
 
 ```php
 
-use NasimTelecom\Simotel\SmartApi\Commands;
+use Simotel\SmartApi\Commands;
 
 class PlayWelcomeMessage
 {
@@ -174,7 +174,7 @@ class RestOfApps
 
 ```
 
-> Don't forget to `use` [ NasimTelecom\Simotel\SmartApi\Commands](https://github.com/nasimtelecom/simotel-php-connect/blob/main/src/SmartApi/Commands.php) trait in your class.
+> Don't forget to `use` [ Simotel\SmartApi\Commands](https://github.com/nasimtelecom/simotel-php-connect/blob/main/src/SmartApi/Commands.php) trait in your class.
 
 
 #### 2. handle received request from simotel smart api

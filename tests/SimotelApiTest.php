@@ -1,13 +1,13 @@
 <?php
 
-namespace NasimTelecom\Simotel\Tests;
+namespace Simotel\Tests;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use NasimTelecom\Simotel\Simotel;
-use NasimTelecom\Simotel\SimotelApi\Parameters;
+use Simotel\Simotel;
+use Simotel\SimotelApi\Parameters;
 
 class SimotelApiTest extends TestCase
 {

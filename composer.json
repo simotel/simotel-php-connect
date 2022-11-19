@@ -10,12 +10,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "NasimTelecom\\Simotel\\": "src"
+      "Simotel\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "NasimTelecom\\Simotel\\Tests\\": "tests"
+      "Simotel\\Tests\\": "tests"
     }
   },
   "minimum-stability": "dev",

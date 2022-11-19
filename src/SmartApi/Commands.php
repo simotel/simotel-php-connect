@@ -1,6 +1,6 @@
 <?php
 
-namespace NasimTelecom\Simotel\SmartApi;
+namespace Simotel\SmartApi;
 
 trait Commands
 {
