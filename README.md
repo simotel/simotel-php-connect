@@ -12,18 +12,18 @@ With this package you can easly connect to simotel server by php and do somethin
 
 
 - [Install](#install)
-- [How To use](#how-to-use)
+- [How to use](#how-to-use)
     - [Simotel API](#simotel-api)
     - [Simotel Event API](#simotel-event-api)
     - [Simotel Smart API](#simotel-smart-api)
     - [Simotel Trunk API](#simotel-trunk-api)
     - [Simotel Extension API](#simotel-extension-api)
     - [Simotel Ivr API](#simotel-ivr-api)
- - [Change log](#change-log)
- - [Contributing](#contributing)
- - [Security](#security)
- - [Credits](#credits)
- - [License](#license)    
+- [Change log](#change-log)
+- [Contributing](#contributing)
+- [Security](#security)
+- [Credits](#credits)
+- [License](#license)
 
 ## Install
 
@@ -31,7 +31,6 @@ Use composer to install and autoload the package:
 ```
 composer require nasimtelecom/simotel-php-connect
 ```
-
 ## How to use
 
 ### Simotel API
@@ -410,4 +409,4 @@ If you discover any security related issues, please email hosseinyaghmaee@gmail.
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[link-author]: https://github.com/khanzadimahdi
+[link-author]: https://github.com/hsyir
