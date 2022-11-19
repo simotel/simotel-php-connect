@@ -29,7 +29,7 @@ With this package you can easly connect to simotel server by php and do somethin
 
 Use composer to install and autoload the package:
 ```
-composer require nasimtelecom/simotel-php-connect
+composer require simotel/simotel-php-connect
 ```
 ## How to use
 
