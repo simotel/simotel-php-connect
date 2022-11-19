@@ -22,7 +22,7 @@ class ExtensionApiTest extends TestCase
         ];
 
         $simotel = new Simotel($this->config);
-        $response = $simotel->extensionApiCall($appData);
+        $response = $simotel->extensionApi($appData);
 
         $this->assertJson($response->toJson());
 

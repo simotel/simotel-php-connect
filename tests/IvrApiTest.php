@@ -22,7 +22,7 @@ class IvrApiTest extends TestCase
         ];
 
         $simotel = new Simotel($this->config);
-        $response = $simotel->ivrApiCall($appData);
+        $response = $simotel->ivrApi($appData);
 
         $this->assertJson($response->toJson());
 

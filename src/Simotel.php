@@ -64,7 +64,7 @@ class Simotel
      * 
      * @return \NasimTelecom\Simotel\ComponentApi\SmartApi
      */
-    public function ivrApiCall($data)
+    public function ivrApi($data)
     {
         $ivrApi = new IvrApi($this->config['ivrApi'] ?? []);
 
@@ -78,7 +78,7 @@ class Simotel
      * 
      * @return \NasimTelecom\Simotel\ComponentApi\ExtensionApi
      */
-    public function extensionApiCall($data)
+    public function extensionApi($data)
     {
         $ivrApi = new ExtensionApi($this->config['extensionApi'] ?? []);
         return $ivrApi->call($data);
@@ -91,7 +91,7 @@ class Simotel
      * 
      * @return \NasimTelecom\Simotel\ComponentApi\TrunkApi
      */
-    public function trunkApiCall($data)
+    public function trunkApi($data)
     {
         $ivrApi = new TrunkApi($this->config['trunkApi'] ?? []);
         return $ivrApi->call($data);

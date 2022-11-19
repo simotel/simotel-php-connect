@@ -22,7 +22,7 @@ class TrunkApiTest extends TestCase
         ];
 
         $simotel = new Simotel($this->config);
-        $response = $simotel->trunkApiCall($appData);
+        $response = $simotel->trunkApi($appData);
 
         $this->assertJson($response->toJson());
 
