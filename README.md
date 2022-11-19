@@ -12,12 +12,18 @@ With this package you can easly connect to simotel server by php and do somethin
 
 
 - [Install](#install)
-- [Simotel API](#simotel-api)
-- [Simotel Event API](#simotel-event-api)
-- [Simotel Smart API](#simotel-smart-api)
-- [Simotel Trunk API](#simotel-trunk-api)
-- [Simotel Extension API](#simotel-extension-api)
-- [Simotel Ivr API](#simotel-ivr-api)
+- [How To use](#how-to-use)
+    - [Simotel API](#simotel-api)
+    - [Simotel Event API](#simotel-event-api)
+    - [Simotel Smart API](#simotel-smart-api)
+    - [Simotel Trunk API](#simotel-trunk-api)
+    - [Simotel Extension API](#simotel-extension-api)
+    - [Simotel Ivr API](#simotel-ivr-api)
+ - [Change log](#change-log)
+ - [Contributing](#contributing)
+ - [Security](#security)
+ - [Credits](#credits)
+ - [License](#license)    
 
 ## Install
 
@@ -26,12 +32,14 @@ Use composer to install and autoload the package:
 composer require nasimtelecom/simotel-php-connect
 ```
 
-## Simotel API
+## How to use
+
+### Simotel API
 Simotel API helps you to connect to simotel server and manage simotel users, queues, trunks, announcements, get reports, send faxes [and more](https://doc.mysup.ir/docs/api/v4/callcenter_api/SimoTelAPI/settings).
 
 
 
-### Connect to Simotel API
+#### Connect to Simotel API
 
 ```php
 
@@ -97,7 +105,7 @@ $users = $res->getData();
 
 
 
-## Simotel Event API
+### Simotel Event API
 
 
 
@@ -121,7 +129,7 @@ $simotel->eventApi()->dispatch($eventName,$simotelEventApiData);
 ```
 > It is possible to put your api endpoint address on [Simotel Api Setting](https://doc.mysup.ir/docs/simotel/callcenter-docs/maintenance/settings/api_settings)
 
-## Simotel Smart API
+### Simotel Smart API
 > We recommend you to study [Simotel SmartApi documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/smart_api) first.
 
 #### 1. create smartApp classes and methods that called by smart api apps
@@ -221,7 +229,7 @@ cmdClearUserData();
 cmdMusicOnHold();
 ```
 
-## Simotel Trunk API
+### Simotel Trunk API
 > We recommend you to study [Simotel Trunk API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/trunk_api) first.
 
 #### 1. create TrunkApp classe and methods
@@ -286,7 +294,7 @@ echo $jsonResponse;
 */
 ```
 
-## Simotel Extension API
+### Simotel Extension API
 > We recommend you to study [Simotel Extension API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/exten_api) first.
 
 
@@ -335,7 +343,7 @@ echo $jsonResponse;
 */
 ```
 
-## Simotel Ivr API
+### Simotel Ivr API
 > We recommend you to study [Simotel Ivr API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/ivr_api) first.
 
 
@@ -382,3 +390,24 @@ echo $jsonResponse;
 		 jsonResponse = {"ok": "1", "case": "2"}
 */
 ```
+## Change log
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has been changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+
+## Security
+
+If you discover any security related issues, please email hosseinyaghmaee@gmail.com instead of using the issue tracker.
+
+## Credits
+
+- [Hossein Yaghmaee][link-author]
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[link-author]: https://github.com/khanzadimahdi
