@@ -12,9 +12,18 @@ With this package you can easly connect to simotel server by php and do somethin
 
 
 - [Install](#install)
-- [Simotel Api](#simotel-api)
-- [Simotel Event Api](#simotel-event-api)
-- [Smart Api](#simotel-smart-api)
+- [How to use](#how-to-use)
+    - [Simotel API](#simotel-api)
+    - [Simotel Event API](#simotel-event-api)
+    - [Simotel Smart API](#simotel-smart-api)
+    - [Simotel Trunk API](#simotel-trunk-api)
+    - [Simotel Extension API](#simotel-extension-api)
+    - [Simotel Ivr API](#simotel-ivr-api)
+- [Change log](#change-log)
+- [Contributing](#contributing)
+- [Security](#security)
+- [Credits](#credits)
+- [License](#license)
 
 ## Install
 
@@ -22,13 +31,14 @@ Use composer to install and autoload the package:
 ```
 composer require nasimtelecom/simotel-php-connect
 ```
+## How to use
 
-## Simotel Api
-Simotel Api helps you to connect to simotel server and manage simotel users, queues, trunks, announcements, get reports, send faxes [and more](https://doc.mysup.ir/docs/api/v4/callcenter_api/SimoTelAPI/settings).
+### Simotel API
+Simotel API helps you to connect to simotel server and manage simotel users, queues, trunks, announcements, get reports, send faxes [and more](https://doc.mysup.ir/docs/api/v4/callcenter_api/SimoTelAPI/settings).
 
 
 
-### Connect to Simotel Api
+#### Connect to Simotel API
 
 ```php
 
@@ -94,7 +104,7 @@ $users = $res->getData();
 
 
 
-## Simotel Event Api
+### Simotel Event API
 
 
 
@@ -118,7 +128,7 @@ $simotel->eventApi()->dispatch($eventName,$simotelEventApiData);
 ```
 > It is possible to put your api endpoint address on [Simotel Api Setting](https://doc.mysup.ir/docs/simotel/callcenter-docs/maintenance/settings/api_settings)
 
-## Simotel Smart Api
+### Simotel Smart API
 > We recommend you to study [Simotel SmartApi documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/smart_api) first.
 
 #### 1. create smartApp classes and methods that called by smart api apps
@@ -167,7 +177,7 @@ class RestOfApps
 > Don't forget to `use` [ NasimTelecom\Simotel\SmartApi\Commands](https://github.com/nasimtelecom/simotel-php-connect/blob/main/src/SmartApi/Commands.php) trait in your class.
 
 
-2. handle received request from simotel smart api
+#### 2. handle received request from simotel smart api
 
 ```php
 $config = Simotel::getDefaultConfig();
@@ -200,7 +210,7 @@ echo $jsonResponse;
 */
 ```
 
-there are is commands you can use in your SmartApps classes:
+there are commands that you can use in your SmartApp classes:
 
 ```php
 cmdPlayAnnouncement($announceFilename);
@@ -217,3 +227,186 @@ cmdSetLimitOnCall($seconds);
 cmdClearUserData();
 cmdMusicOnHold();
 ```
+
+### Simotel Trunk API
+> We recommend you to study [Simotel Trunk API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/trunk_api) first.
+
+#### 1. create TrunkApp classe and methods
+
+```php
+
+class SelectTrunk
+{
+    public function selectTrunk($appData)
+    {
+        if(/* some conditions */)
+            return [
+                "trunk" => "trunk1",
+                "extension" => "extension1",
+                "call_limit" => "300"
+            ];
+        
+        //else
+        return [
+            "trunk" => "trunk2",
+            "extension" => "extension2",
+            "call_limit" => "400"
+        ];
+    }
+}
+
+
+```
+
+#### 2. handle received request from Simotel Trunk API
+
+```php
+$config = Simotel::getDefaultConfig();
+$config["trunkApi"]["apps"] = [
+  'selectTrunk' => SelectTrunk::class,
+];
+
+// place this codes where you want grab income requests
+// from simotel smartApi calls     
+$simotel = new Simotel($config);
+$appData = $_POST["app_data"];
+$jsonResponse = $simotel->trunkApi($appData)->toJson();
+
+header('Content-Type: application/json; charset=utf-8');
+echo $jsonResponse;
+
+/*
+    if some conditions then 
+		 jsonResponse = {
+            "ok": "1",             
+            "trunk": "trunk1",
+            "extension": "extension1",
+            "call_limit": "300"
+        }
+	 else 
+		jsonResponse = {
+            "ok": "1",             
+            "trunk": "trunk2",
+            "extension": "extension2",
+            "call_limit": "400"
+        }
+*/
+```
+
+### Simotel Extension API
+> We recommend you to study [Simotel Extension API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/exten_api) first.
+
+
+
+#### 1. create Extension API class and methods
+
+```php
+
+class SelectExtension
+{
+    public function selectExtension($appData)
+    {
+        if(/* some conditions */)
+            return "ext1";
+        
+        //else
+            return "ext2";
+    }
+}
+
+
+```
+
+#### 2. handle received request from Simotel Extension API
+
+```php
+$config = Simotel::getDefaultConfig();
+$config["extensionApi"]["apps"] = [
+  'selectExtension' => SelectExtension::class,
+];
+
+// place this codes where you want grab income requests
+// from simotel extensionApi calls     
+$simotel = new Simotel($config);
+$appData = $_POST["app_data"];
+$jsonResponse = $simotel->extensionApi($appData)->toJson();
+
+header('Content-Type: application/json; charset=utf-8');
+echo $jsonResponse;
+
+/*
+    if some conditions then 
+		 jsonResponse = {"ok": "1", "extension": "ext1"}
+	 else 
+		 jsonResponse = {"ok": "1", "extension": "ext2"}
+*/
+```
+
+### Simotel Ivr API
+> We recommend you to study [Simotel Ivr API documents](https://doc.mysup.ir/docs/api/callcenter_api/APIComponents/ivr_api) first.
+
+
+#### 1. create Ivr API class and methods
+
+```php
+
+class SelectIvrCase
+{
+    public function selectCase($appData)
+    {
+        if(/* some conditions */)
+            return "1";
+        
+        //else
+            return "2";
+    }
+}
+
+
+```
+
+#### 2. handle received request from Simotel Ivr API
+
+```php
+$config = Simotel::getDefaultConfig();
+$config["ivrApi"]["apps"] = [
+  'selectCase' => SelectIvrCase::class,
+];
+
+// place this codes where you want grab income requests
+// from simotel ivrApi calls     
+$simotel = new Simotel($config);
+$appData = $_POST["app_data"];
+$jsonResponse = $simotel->ivrApi($appData)->toJson();
+
+header('Content-Type: application/json; charset=utf-8');
+echo $jsonResponse;
+
+/*
+    if some conditions then 
+		 jsonResponse = {"ok": "1", "case": "1"}
+	 else 
+		 jsonResponse = {"ok": "1", "case": "2"}
+*/
+```
+## Change log
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has been changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+
+## Security
+
+If you discover any security related issues, please email hosseinyaghmaee@gmail.com instead of using the issue tracker.
+
+## Credits
+
+- [Hossein Yaghmaee][link-author]
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[link-author]: https://github.com/hsyir
