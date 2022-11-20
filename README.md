@@ -403,7 +403,7 @@ If you discover any security related issues, please email hosseinyaghmaee@gmail.
 
 ## Credits
 
-- [Hossein Yaghmaee][link-author]
+- [Simotel][link-simotel]
 
 ## License
 
