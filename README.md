@@ -5,9 +5,9 @@
 > [nasimtelecom/simotel-laravel-connect](https://github.com/nasimtelecom/simotel-laravel-connect)
 
 Keep connected with Simotel by PHP. Simotel is a wonderful call center software with huge abilities.
-visit Simotel documents here: [doc.mysup.ir](https://doc.mysup.ir/)
+visit **[simotel](https://simotel.com/)** documents here: [doc.mysup.ir](https://doc.mysup.ir/)
 
-With this package you can easly connect to simotel server by php and do somethings amazing.
+With this package you can easly connect to **[simotel](https://simotel.com/)** server by php and do somethings amazing.
 
 
 
@@ -410,3 +410,4 @@ If you discover any security related issues, please email hosseinyaghmaee@gmail.
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 [link-author]: https://github.com/hsyir
+[link-simotel]: https://simotel.com/
