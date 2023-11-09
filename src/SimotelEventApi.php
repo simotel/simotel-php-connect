@@ -26,7 +26,7 @@ class SimotelEventApi
     {
         $events = [
             "Cdr", "NewState", "IncomingCall", "OutgoingCall", "Transfer", "ExtenAdded", "ExtenRemoved",
-            "IncomingFax", "IncomingFax", "CdrQueue", "VoiceMail", "VoiceMailEmail", "Survey"
+            "IncomingFax", "IncomingFax", "CdrQueue", "VoiceMail", "VoiceMailEmail", "Survey", "Ping"
         ];
 
         if (!in_array($simotelEventName, $events))
